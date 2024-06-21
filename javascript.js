@@ -6,7 +6,7 @@ function Usuario() { //Aqui eu preparo para criar minha nova função chamada Us
             var Segundapg = window.open('http://127.0.0.1:5500/pagina%202.html', '_self'); //Aqui eu dou a instrução para abrir uma nova pagina enquanto declaro como Segundapg pra facilitar o entendimento.
             Segundapg.document.write('<h1>Boas vindas ' + valorNome + '!</h1>'); //Aqui eu chamo o meu elemento declarado, enquanto uso o método write que me permite colocar texto no html dessa pagina, enquanto complemento com o nome da pessoa inserido.
             Segundapg.document.write('<h1>O Jogo consiste em tentar acertar o número correto, vamos ver em quantas tentativas você acerta?</h1>'); //Aqui é a mesma técnica do código anterior pra introduzir o usuario sobre o jogo.
-            Segundapg.document.write('<input type="text" id="adivinhar" placeholder="Tente acertar um valor">'); //aqui eu aproveito que eu só posso usar o html dentro do write e já dou um id pro campo, assim aproveitando para pegar o valor dele no futuro.
+            Segundapg.document.write('<input type="number" id="adivinhar" placeholder="Tente acertar um valor">'); //aqui eu aproveito que eu só posso usar o html dentro do write e já dou um id pro campo, assim aproveitando para pegar o valor dele no futuro.
             Segundapg.document.write('<button id="btnadivinha" onclick="Adivinhar()">Adivinhar</button>'); //Aqui é a mesma lógica do anterior, porém aqui eu executo a função Adivinhar que no momento que o usuario clicar no botão, ira executar a função.
             Segundapg.document.close(); //Aqui eu finalizo com close que consiste nessas linhas de código do window, write, close e etc.
             
@@ -15,6 +15,7 @@ function Usuario() { //Aqui eu preparo para criar minha nova função chamada Us
        let numero = Math.floor(Math.random() * 15);
          Math.floor(Math.random() * 15); //Aqui escolhe um número aleatório para o usuario acertar.
        console.log(numero);
+       var tentativas = 0;
     function Adivinhar() { //Aqui eu começo uma nova função chamada Adivinhar.
         var valorAdivinhação = document.getElementById("adivinhar").value; //Aqui eu pego o valor inserido no campo adivinhar e ao mesmo tempo nomeio ele como valorAdivinhação para simplificar.
         if (valorAdivinhação > 15) { //Aqui eu condiciono caso o valor seja maior que 100 aparecera um alerta.
@@ -23,25 +24,21 @@ function Usuario() { //Aqui eu preparo para criar minha nova função chamada Us
         }
         if (valorAdivinhação == numero){
         alert("Você acertou!");
+       
         var Terceirapg = window.open('http://127.0.0.1:5500/pagina%203.html', '_self');
         Terceirapg.document.write('<h1>Parabéns por acertar!</h1>'); 
-        Terceirapg.document.write('<h1>Seu numero de tentativas foi:' + contador + '!</h1>'); 
+        Terceirapg.document.write('<h1>Seu numero de tentativas foi: ' + tentativas + '!</h1>'); 
         Terceirapg.document.close();
+        
         } else {
+            tentativas++;
           alert("Você errou!");
         }
+        if(valorAdivinhação > numero){
+            alert("O Numero é menor!");
+        }
+        if(valorAdivinhação < numero){
+            alert("O Numero é maior!");
+        }
     }
-     // Seleciona o botão e o contador pelo ID
-     let adivinha = document.getElementById('btnadivinha');
-     let contadorElemento = document.getElementById('contador');
- 
-     // Inicializa o contador
-     let contador = 0;
- 
-     // Adiciona um event listener para detectar cliques no botão
-     adivinha.addEventListener('click', function() {
-         // Incrementa o contador
-         contador++;
-         // Atualiza o texto do elemento do contador
-         contadorElemento.textContent = contador;
-     });
+   
