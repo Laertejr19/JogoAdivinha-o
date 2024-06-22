@@ -1,6 +1,23 @@
-input:invalid {
-    border-color: red !important;
-  }
-  input:valid {
-    border-color: green !important;
-  }
+h1{
+  background:darkslategrey;
+  justify-content: center;
+  align-items: center;
+  font-family: Monospace;
+}
+input{
+  justify-content: center;
+  align-items: center;
+}
+button{
+  background: rgb(104, 104, 104);
+  justify-content: center;
+  align-items: center;
+  font-family: Monospace;
+}
+body{
+  background-color: darkslategrey;
+  font-family: Monospace;
+}
+footer{
+  background-color: darkslategray;
+}
